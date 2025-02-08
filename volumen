@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reproducir Música con Control de Volumen</title>
+    <style>
+        /* Estilo del botón */
+        #playButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #playButton:hover {
+            background-color: #45a049;
+        }
+
+        /* Estilo del control de volumen */
+        #volumeControl {
+            margin-top: 20px;
+        }
+
+        /* Estilo para el contenedor */
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin-top: 50px;
+        }
+
+        .control-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Botón para reproducir música -->
+    <button id="playButton">Reproducir Música</button>
+
+    <!-- Elemento de audio -->
+    <audio id="audioPlayer" src="Sachi's Gift to Kirito.mp3"></audio>
+
+    <!-- Control de volumen -->
+    <div class="control-container">
+        <label for="volumeControl">Control de Volumen: </label>
+        <input id="volumeControl" type="range" min="0" max="1" step="0.01" value="1">
+        <span id="volumeValue">100%</span>
+    </div>
+
+    <script>
+        // Obtener el botón, el reproductor de audio y el control de volumen
+        var playButton = document.getElementById("playButton");
+        var audioPlayer = document.getElementById("audioPlayer");
+        var volumeControl = document.getElementById("volumeControl");
+        var volumeValue = document.getElementById("volumeValue");
+
+        // Cuando el usuario hace clic en el botón, se reproduce o pausa la música
+        playButton.onclick = function() {
+            // Reproducir o pausar la música dependiendo del estado
+            if (audioPlayer.paused) {
+                audioPlayer.play();  // Reproducir música
+                playButton.textContent = "Pausar Música";  // Cambiar texto del botón
+            } else {
+                audioPlayer.pause();  // Pausar música
+                playButton.textContent = "Reproducir Música";  // Cambiar texto del botón
+            }
+        }
+
+        // Ajustar el volumen según el valor del control
+        volumeControl.addEventListener("input", function() {
+            audioPlayer.volume = volumeControl.value;  // Establecer el volumen
+            volumeValue.textContent = Math.round(volumeControl.value * 100) + "%";  // Mostrar el porcentaje de volumen
+        });
+    </script>
+
+</body>
+</html>
