@@ -1,0 +1,160 @@
+
+body {
+  background: #131b21;
+}
+
+.container {
+  width: 50%;
+  margin: 0 auto;
+}
+
+svg#flower-frame {
+  height: 90vh;
+  width: 100%;
+}
+
+#lyrics {
+  font-size: 28px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: white;
+  position: absolute;
+  top: 50%; /* Centra el texto verticalmente */
+  left: 50%; /* Centra el texto horizontalmente */
+  transform: translate(-50%, -50%); /* Ajusta el texto para que esté centrado exacto */
+  margin-bottom: 20%;
+  z-index: 2;
+  font-weight: bold;
+  letter-spacing: 4px;
+}
+@media only screen and (max-width: 600px) {
+  /* Estilos específicos para dispositivos con un ancho máximo de 600px */
+  #lyrics {
+      font-size: 14px; /* Reduce el tamaño del texto para dispositivos más pequeños */
+      margin-bottom: 530px;
+      letter-spacing: 3px;
+  }
+
+}
+
+#Footer_group_1_,
+[id^=PinkFlowerGroup],
+[id^=BaseGroup] path,
+[id^=LeafGroup] path,
+path[id^=Stroke],
+g[id^=BudGroup] g[id^=BudGroup] g[id^=Bud],
+#Bud8_1_,
+#Bud10_1_,
+#Bud23_1_,
+#Bud26_1_,
+[id^=Dots],
+[id^=Flourish] {
+  visibility: hidden;
+}
+
+.body1 {
+  font-family: Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  text-align: center;
+  position: relative;
+  background: black;
+}
+.sky {
+  position: absolute;
+  width: 10%;
+  height: 10%;
+  overflow: hidden;
+  background: radial-gradient(circle, rgba(10, 10, 50, 1) 0%, rgba(0, 0, 0, 1) 100%);
+}
+.stars {
+  width: 2px;
+  height: 2px;
+  background: white;
+  position: absolute;
+  border-radius: 50%;
+  animation: twinkle 2s infinite alternate;
+}
+@keyframes twinkle {
+  0% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+.container_2 {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 43%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+}
+button {
+  background: #ff69b4;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+button:hover {
+  background: #ff1493;
+}
+#no {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* ------------------------------*/
+
+#modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente */
+  color: white;
+  font-size: 2rem;
+  z-index: 10;
+}
+
+#modal-content {
+  text-align: center;
+  background-color: #333;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+#modal button {
+  padding: 15px 25px;
+  font-size: 1.5rem;
+  background-color: #61dafb;
+  border: none;
+  color: black;
+  cursor: pointer;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+#modal button:hover {
+  background-color: #21a1f1;
+}
+
+/* Bloquear interacción con el contenido de la página */
+#content {
+  pointer-events: none; /* Deshabilita clics en el contenido */
+}

@@ -1,0 +1,319 @@
+body {
+    background: #171717;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+@font-face {
+    font-family: 'ChocolateDealer';
+    src: url('../Letra/Cholate-dealer.otf') format('opentype'); /* Ruta a la fuente .otf */
+    font-style: cursive; /* Define el estilo normal de la fuente */
+  }
+#selectorContainer {
+    margin-top: 10px;
+    font-size: 18px;
+    color: white;
+    position: relative;
+    left: 42%;
+}
+.container {
+    background-image: linear-gradient(#051327, #000);
+    position: fixed;
+    inset: 0;
+}
+
+.space {
+    width: var(--size);
+    height: var(--size);
+    background: #fff;
+    box-shadow: var(--space-layer);
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 75%;
+    animation: moveStars var(--duration) linear infinite;
+}
+
+@keyframes moveStars {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-100vh);
+    }
+}
+
+/* Estilos para las estrellas fugaces */
+.shooting-star {
+position: absolute;
+width: 4px;
+height: 4px;
+background: linear-gradient(30deg, #ffffff, rgba(0, 0, 255, 0));
+border-radius: 50%;
+filter: drop-shadow(0 0 6px #ffffff);
+transform: rotate(30deg); /* Se inclina desde el inicio */
+animation: tail 3s ease-in-out infinite, falling 3s ease-in-out infinite;
+}
+
+@keyframes tail {
+0% {
+width: 0;
+transform: translate(0, 0) rotate(30deg);
+}
+30% {
+width: 120px; /* Alargar más la cola */
+transform: translate(30px, 30px) rotate(30deg);
+}
+100% {
+width: 0;
+transform: translate(150px, 150px) rotate(30deg);
+}
+}
+
+@keyframes falling {
+0% {
+transform: translate(0, 0) rotate(30deg);
+}
+100% {
+transform: translate(100vw, 100vh) rotate(30deg);
+}
+}
+
+.shooting-star::before, .shooting-star::after {
+    content: '';
+    position: absolute;
+    top: calc(50% - 2px);
+    right: 0;
+    height: 4px;
+    background: linear-gradient(30deg, rgba(0, 0, 255, 0), #ffffff, rgba(0, 0, 255, 0)); /* La cola sigue el mismo gradiente de 45 grados */
+    border-radius: 100%;
+    transform: translateX(50%) rotateZ(30deg);
+    animation: shining 5s ease-in-out infinite;
+}
+@keyframes fadeOut {
+0% {
+    opacity: 1;
+}
+100% {
+    opacity: 0;
+}
+}
+
+@keyframes shining {
+    0% {
+        width: 0;
+    }
+    50% {
+        width: 30px;
+    }
+    100% {
+        width: 0;
+    }
+}
+
+.shooting-star::after {
+    transform: translateX(50%) rotateZ(-30deg);
+}
+
+h1 {
+    font-family: 'ChocolateDealer', cursive;
+    font-size: 60px;
+    color: #ffffff;
+    letter-spacing: 5px;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 10px;
+    white-space: nowrap;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0);
+    border: 2px solid transparent;
+    box-sizing: border-box;
+    text-shadow: 
+    2px 2px 0px black,  /* Contorno superior e inferior */
+    -2px -2px 0px black, /* Contorno superior izquierdo */
+    2px -2px 0px black,  /* Contorno inferior derecho */
+    -2px 2px 0px black;  /* Contorno inferior izquierdo */
+}
+
+
+
+input[type="number"] {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    margin: 10px;
+    background-color: #d6eaf8;
+    border: 1px solid #d6eaf8;
+    width: 250px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    color: white;
+}
+
+input[type="number"]:hover {
+    background-color: #85c1e9;
+}
+
+input[type="number"]:focus {
+    background-color: #aed6f1;
+    transform: translateY(-10px);
+    box-shadow: 0 0 10px rgba(174, 214, 241, 1);
+}
+
+label {
+    font-size: 20px;
+    margin-right: 10px;
+    color: white;
+    display: inline-block;
+}
+
+#notasContainer {
+    position: relative;
+    width: 90%;
+    height: 75vh;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.24);
+    overflow: hidden;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.nota {
+    padding: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    transform: rotate(-5deg);
+    position: absolute;
+    background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 100%);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+}
+
+.nota:nth-child(even) {
+    transform: rotate(5deg);
+}
+
+/* Animación del cielo estrellado */
+#canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+.btn-container {
+    display: flex;
+    justify-content: center; /* Centrar los botones */
+    gap: 20px; /* Espacio entre los botones */
+    position: relative;
+    left: 38%;
+    margin-top: 8px; /* Separar de los elementos superiores */
+    z-index: 5; /* Asegurarse de que los botones estén por encima de otros elementos */
+}
+.btn {
+    font-family: 'Lobster', cursive;
+    font-size: 18px;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+    position: relative;
+    overflow: hidden;
+}
+.ladybug {
+    background-color: red;
+    color: white;
+    box-shadow: 0 0 10px gray;
+
+}
+.ladybug:hover {
+    background: black;
+    color: red;
+}
+.ladybug .bubbles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+.bubble {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: rgb(255, 0, 0);
+    border-radius: 50%;
+    opacity: 0.7;
+    animation: moveBubbles 12s infinite alternate cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Animación de las burbujas con un movimiento más lento y fluido */
+@keyframes moveBubbles {
+    0% { transform: translate(0, 0); }
+    20% { transform: translate(30px, 30px); }
+    40% { transform: translate(-30px, -40px); }
+    60% { transform: translate(40px, -20px); }
+    80% { transform: translate(-20px, 50px); }
+    100% { transform: translate(50px, -30px); }
+}
+
+.catnoir {
+    background-color: black;
+    color: #72ff72;
+    text-shadow: 0 0 5px #72ff72;
+}
+.catnoir:hover {
+    background: #72ff72;
+    color: black;
+}
+.catnoir::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 100%;
+    background: rgba(114, 255, 114, 0.5);
+    left: -30px;
+    transform: skewX(-20deg);
+    transition: left .5s;
+}
+.catnoir:hover::before {
+    left: 100%;
+}
+.akuma {
+    background: linear-gradient(135deg, purple, black);
+    color: white;
+}
+.akuma:hover {
+    background: black;
+    color: red;
+    box-shadow: 0 0 15px red;
+}
+.akuma::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 0, 0, 0.3);
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.akuma:hover::after {
+    opacity: 1;
+}
